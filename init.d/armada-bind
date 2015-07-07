@@ -1,0 +1,40 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:           armada-bind
+# Required-Start:     $remote_fs $network
+# Required-Stop:      $remote_fs $network
+# Should-Start:       armada
+# Should-Stop:        armada
+# Default-Start:      2 3 4 5
+# Default-Stop:       0 1 6
+# Short-Description:  Bind armada services to localhost:PORT.
+# Description:
+#   Bind armada services to localhost:PORT for services that don't have access to armada tools.
+### END INIT INFO
+
+PATH=$PATH:/usr/local/bin
+
+case "$1" in
+    start)
+        armada run armada-bind -e SERVICE_NAME=chat-service --env production -p 2001:80
+        touch /var/lock/subsys/armada-bind 2>/dev/null
+        ;;
+
+    stop)
+        armada list -q -l armada-bind | xargs armada stop
+        rm -f /var/lock/subsys/armada-bind 2>/dev/null
+        ;;
+
+    restart)
+        $0 stop
+        $0 start
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
