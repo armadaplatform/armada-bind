@@ -63,10 +63,9 @@ its well-known name like `mysql-games-slave`.
 
 To do it we can run:
 
-    docker tag armada-bind mysql-games-slave
-    armada run mysql-games-slave -e SERVICE_ADDRESS=10.10.10.11:3306,mysql.initech.com:3306
+    armada run armada-bind --rename mysql-games-slave -e SERVICE_ADDRESS=10.10.10.11:3306,mysql.initech.com:3306
 
-`docker tag` is used to give the service some meaningful name instead of just `armada-bind`.
+`--rename` or `-r` parameter is used to give the service some meaningful name instead of just `armada-bind`.
 Now we can connect to `mysql-games-slave` from within our armada services. The easy way would be to
 use local_magellan, by putting lines like these below in the supervisor configuration:
 
