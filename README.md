@@ -63,10 +63,9 @@ its well-known name like `mysql-games-slave`.
 
 To do it we can run:
 
-    docker tag armada-bind mysql-games-slave
-    armada run mysql-games-slave -e SERVICE_ADDRESS=10.10.10.11:3306,mysql.initech.com:3306
+    armada run armada-bind --rename mysql-games-slave -e SERVICE_ADDRESS=10.10.10.11:3306,mysql.initech.com:3306
 
-`docker tag` is used to give the service some meaningful name instead of just `armada-bind`.
+`--rename` or `-r` parameter is used to give the service some meaningful name instead of just `armada-bind`.
 Now we can connect to `mysql-games-slave` from within our armada services. The easy way would be to
 use local_magellan, by putting lines like these below in the supervisor configuration:
 
@@ -76,8 +75,7 @@ use local_magellan, by putting lines like these below in the supervisor configur
 
 That way, we can connect to our MySQL by using address `localhost:3001`.
 What's more, every new connection to it is established in a load-balanced manner between the 2 supplied addresses.
-We can easily add and/or remove MySQL slave instances just by restarting `armada-bind` (tagged `mysql-games-slave`)
-with another `SERVICE_ADDRESS` variable.
+We can easily add and/or remove MySQL slave instances just by restarting `mysql-games-slave` with another `SERVICE_ADDRESS` variable.
 
 We've used external MySQL database as an example, but the same reasoning applies to other
 not-yet-armadized services.
