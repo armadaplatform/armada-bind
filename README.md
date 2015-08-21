@@ -75,8 +75,7 @@ use local_magellan, by putting lines like these below in the supervisor configur
 
 That way, we can connect to our MySQL by using address `localhost:3001`.
 What's more, every new connection to it is established in a load-balanced manner between the 2 supplied addresses.
-We can easily add and/or remove MySQL slave instances just by restarting `armada-bind` (tagged `mysql-games-slave`)
-with another `SERVICE_ADDRESS` variable.
+We can easily add and/or remove MySQL slave instances just by restarting `mysql-games-slave` with another `SERVICE_ADDRESS` variable.
 
 We've used external MySQL database as an example, but the same reasoning applies to other
 not-yet-armadized services.
