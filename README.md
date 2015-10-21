@@ -91,7 +91,7 @@ status of `armada-bind` service.
 
 To do that, add `-e HTTP_CHECK` to `armada run` arguments.
 
-It will set `armada-bind`'s status as `passing` as long as the pointed service returns HTTP response, and `crticial`
+It will set `armada-bind`'s status as `passing` as long as the pointed service returns HTTP response, and `warning`
 otherwise.
 
 
