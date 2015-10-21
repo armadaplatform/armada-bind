@@ -84,6 +84,16 @@ Using `armada-bind` like this can also provide more visibility to the legacy ser
 act as proper armada-citizens without changing their code.
 
 
+## Health check for HTTP services.
+
+In case the service pointed by armada-bind is HTTP server, you may want to reflect the status of that server in the
+status of `armada-bind` service.
+
+To do that, add `-e HTTP_CHECK` to `armada run` arguments.
+
+It will set `armada-bind`'s status as `passing` as long as the pointed service returns HTTP response, and `warning`
+otherwise.
+
 
 # Installing as a service on Amazon Linux.
 
