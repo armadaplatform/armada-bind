@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+curl -s localhost:$1 > /dev/null
+[ $? == 0 ] || exit 2
