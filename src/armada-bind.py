@@ -22,6 +22,7 @@ def main():
             80: service_addresses
         }
         haproxy.update_from_mapping(port_to_addresses)
+    os.system('supervisorctl start local_magellan')
 
 
 if __name__ == '__main__':
